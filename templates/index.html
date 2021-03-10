@@ -37,25 +37,57 @@
      <h2 class="text-center mt-3">
        Spam Detection
      </h2>
-     <form method="POST" action="/">
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Enter your message here :</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" name="msg" rows="8"></textarea>
-      </div>
+     <div class="container">
+       <div class="row">
+         <div class = "col-lg-6 col-md-6">
+           <p>Paste your image here</p>
+          <form action="scanner" method=post enctype=multipart/form-data>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" name="file" class="custom-file-input" id="inputGroupFile01"
+                           aria-describedby="inputGroupFileAddon01" accept="image/*">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
 
-  <button class="btn btn-primary">
- Submit
-  </button>
+            <br>
+            <button type="submit" class="btn btn-raised btn-primary">Scan Image</button>
+        </form>
+         </div>
+         <div class = "col-lg-6 col-md-6">
+          <form method="POST" action="/">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Enter your message here :</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="msg" rows="8"></textarea>
+            </div>
+      
+        <button class="btn btn-primary">
+       Submit
+        </button>
+      
+      </form>
+        </div>
+       </div>
+     </div>
 
-</form>
+     
     </div>
 
-
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      $('#inputGroupFile01').on('change',function(){
+          //get the file name
+          var fileName = $(this).val();
+          var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+          //replace the "Choose a file" label
+          $(this).next('.custom-file-label').html(cleanFileName);
+      })
+  </script>
   </body>
 </html>
