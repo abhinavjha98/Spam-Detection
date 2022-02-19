@@ -18,7 +18,8 @@ import io
 import pytesseract
 from PIL import Image
 from flask import Flask, request, render_template, redirect, url_for, session
-
+import re 
+from urllib.parse import urlparse
 import nltk
 
 app = Flask(__name__)
@@ -47,6 +48,8 @@ def getDoc(document):
     return d
 
 cv = pickle.load(open("models/vectorizer.pickle", 'rb'))
+
+
 
 def prepare(messages):
     print("hello")
